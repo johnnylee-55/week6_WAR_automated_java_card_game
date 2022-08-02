@@ -1,24 +1,26 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class Player {
-	
-	private List<Card> hand;
+	private Deck hand;
 	private int score;
 	private String name;
 	
 	public Player(String name) {
 		this.name = name;
 		score = 0;
-		System.out.println("New player created: " + name);
+		Deck hand = new Deck();
+		
 	}
 	
 	public void describe() {
+		// prints info about the player and calls the describe method for each card in the hand
+		
 		System.out.println("=======PLAYER INFO=======");
 		System.out.println("Player name: " + name);
 		System.out.println("Score: " + score);
 		System.out.println("Hand: ");
 		try {
-			for (Card card : hand) {
+			for (Card card : hand.cards) {
 			card.describe();
 			}
 		} catch (NullPointerException e){
@@ -26,24 +28,33 @@ public class Player {
 		}
 	}
 	
-	public void flip() {
+	public Card flip() {
+		// removes and returns the top card of the hand
 		
+		Card flippedCard = hand.get(0);
+		hand.remove(0);
+		
+		return flippedCard;
 	}
 	
-	public void draw() {
+	public void draw(Deck deck) {
+		// takes a Deck as an argument and calls the draw method on the deck, adding the returned Card to the hand
 		
+		hand.cards.add(deck.draw() );
 	}
 	
 	public void incrementScore() {
+		// adds 1 to the player's score
 		
+		score++;
 	}
 	
 	
 	// getters/setters
-	public List<Card> getHand() {
+	public Deck getHand() {
 		return hand;
 	}
-	public void setHand(List<Card> hand) {
+	public void setHand(Deck hand) {
 		this.hand = hand;
 	}
 	public int getScore() {

@@ -51,8 +51,43 @@ public class Deck {
 		
 	}
 	
-	public void draw() {
+	public Card draw() {
 		
+		// removes the card at the top of the deck and returns the drawn card
+		Card drawnCard = cards.get(0);
+		cards.remove(0);
+		
+		return drawnCard;
+		
+	}
+	
+	public Deck splitDeckEvens() {
+		
+		Deck deckEvens = new Deck();
+		
+		// gets even-indexed cards
+		for (int i = 0; i < cards.size(); i++) {
+			if (i % 2 == 0) {
+				deckEvens.cards.add(cards.get(i) );
+			}
+		} // end of loop
+		
+		return deckEvens;
+		
+	}
+	
+	public Deck splitDeckOdds() {
+		
+		Deck deckOdds = new Deck();
+		
+		// gets odd-indexed cards
+		for (int i = 0; i < cards.size(); i++) {
+			if (i % 2 != 0) {
+				deckOdds.cards.add(cards.get(i) );
+			}
+		} // end of loop
+		
+		return deckOdds;
 	}
 
 }
