@@ -9,8 +9,8 @@ public class Deck {
 	
 	// constructor
 	public Deck() {
+		// creates an new, ordered deck upon construction
 		
-		// creates an new, ordered deck
 		cards = new ArrayList<Card>();
 		
 		for (Suit suit : Suit.values() ) {
@@ -22,7 +22,7 @@ public class Deck {
 	
 	
 	// methods
-	public void checkDeck() {  // testingMethod
+	public void describe() {  
 		int i = 0;
 		for (Card card : cards) {
 			i++;
@@ -33,6 +33,7 @@ public class Deck {
 	}
 	
 	public void shuffle() {
+		// shuffles order or cards in deck
 		
 		Card tempCard;
 		Random r = new Random();
@@ -52,8 +53,8 @@ public class Deck {
 	}
 	
 	public Card draw() {
-		
 		// removes the card at the top of the deck and returns the drawn card
+		
 		Card drawnCard = cards.get(0);
 		cards.remove(0);
 		
@@ -61,33 +62,32 @@ public class Deck {
 		
 	}
 	
-	public Deck splitDeckEvens() {
+	public ArrayList<Card> takeEvens() {
+		// returns a deck with all the even-indexed cards
 		
-		Deck deckEvens = new Deck();
+		ArrayList<Card> evenCards = new ArrayList<Card>();
 		
-		// gets even-indexed cards
 		for (int i = 0; i < cards.size(); i++) {
 			if (i % 2 == 0) {
-				deckEvens.cards.add(cards.get(i) );
+				evenCards.add(cards.get(i) );
 			}
-		} // end of loop
+		}
 		
-		return deckEvens;
-		
+		return evenCards;
 	}
 	
-	public Deck splitDeckOdds() {
+	public ArrayList<Card> takeOdds() {
+		// returns a deck with all the odd-indexed cards
 		
-		Deck deckOdds = new Deck();
+		ArrayList<Card> oddCards = new ArrayList<Card>();
 		
-		// gets odd-indexed cards
 		for (int i = 0; i < cards.size(); i++) {
 			if (i % 2 != 0) {
-				deckOdds.cards.add(cards.get(i) );
+				oddCards.add(cards.get(i) );
 			}
-		} // end of loop
+		}
 		
-		return deckOdds;
+		return oddCards;
 	}
 
 }

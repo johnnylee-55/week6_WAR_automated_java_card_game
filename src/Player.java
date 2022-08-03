@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-public class Player {
-	private Deck hand;
+public class Player extends Deck{
+	
+	private ArrayList<Card> hand;
 	private int score;
 	private String name;
 	
 	public Player(String name) {
 		this.name = name;
 		score = 0;
-		Deck hand = new Deck();
 		
 	}
 	
@@ -20,28 +20,33 @@ public class Player {
 		System.out.println("Score: " + score);
 		System.out.println("Hand: ");
 		try {
-			for (Card card : hand.cards) {
-			card.describe();
-			}
-		} catch (NullPointerException e){
-			System.out.println("EMPTY");
+			int i = 1;
+			for (Card card : hand) {
+				System.out.print(i + "-");
+				card.describe();
+				i++;
+			} // end of loop
+			
+		} catch (NullPointerException e) {
+			System.out.println("-EMPTY-");
+			
+		} catch (Exception e) {
+			System.out.println("Could not retrieve hand: " + e.toString() );
 		}
+		
 	}
 	
-	public Card flip() {
-		// removes and returns the top card of the hand
-		
-		Card flippedCard = hand.get(0);
-		hand.remove(0);
-		
-		return flippedCard;
-	}
+//	public Card flip() {
+//		// removes and returns the top card of the hand
+//		
+//		
+//	}
 	
-	public void draw(Deck deck) {
-		// takes a Deck as an argument and calls the draw method on the deck, adding the returned Card to the hand
-		
-		hand.cards.add(deck.draw() );
-	}
+//	public void draw(Deck deck) {
+//		// takes a Deck as an argument and calls the draw method on the deck, adding the returned Card to the hand
+//		
+//		
+//	}
 	
 	public void incrementScore() {
 		// adds 1 to the player's score
@@ -51,10 +56,10 @@ public class Player {
 	
 	
 	// getters/setters
-	public Deck getHand() {
+	public ArrayList<Card> getHand() {
 		return hand;
 	}
-	public void setHand(Deck hand) {
+	public void setHand(ArrayList<Card> hand) {
 		this.hand = hand;
 	}
 	public int getScore() {
