@@ -23,6 +23,9 @@ public class Deck {
 	
 	// methods
 	public void describe() {  
+		
+		System.out.println("====PLAYING DECK====");
+		
 		int i = 0;
 		for (Card card : cards) {
 			i++;
@@ -53,41 +56,13 @@ public class Deck {
 	}
 	
 	public Card draw() {
-		// removes the card at the top of the deck and returns the drawn card
+		// removes and returns the top card of the Cards field
 		
 		Card drawnCard = cards.get(0);
 		cards.remove(0);
 		
 		return drawnCard;
 		
-	}
-	
-	public ArrayList<Card> takeEvens() {
-		// returns a deck with all the even-indexed cards
-		
-		ArrayList<Card> evenCards = new ArrayList<Card>();
-		
-		for (int i = 0; i < cards.size(); i++) {
-			if (i % 2 == 0) {
-				evenCards.add(cards.get(i) );
-			}
-		}
-		
-		return evenCards;
-	}
-	
-	public ArrayList<Card> takeOdds() {
-		// returns a deck with all the odd-indexed cards
-		
-		ArrayList<Card> oddCards = new ArrayList<Card>();
-		
-		for (int i = 0; i < cards.size(); i++) {
-			if (i % 2 != 0) {
-				oddCards.add(cards.get(i) );
-			}
-		}
-		
-		return oddCards;
 	}
 
 }

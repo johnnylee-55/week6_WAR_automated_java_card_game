@@ -9,9 +9,10 @@ public class Player extends Deck{
 	public Player(String name) {
 		this.name = name;
 		score = 0;
-		
+		hand = new ArrayList<Card>();
 	}
 	
+	@Override
 	public void describe() {
 		// prints info about the player and calls the describe method for each card in the hand
 		
@@ -20,6 +21,7 @@ public class Player extends Deck{
 		System.out.println("Score: " + score);
 		System.out.println("Hand: ");
 		try {
+			// includes a counter easily count the amount of cards
 			int i = 1;
 			for (Card card : hand) {
 				System.out.print(i + "-");
@@ -36,21 +38,26 @@ public class Player extends Deck{
 		
 	}
 	
-//	public Card flip() {
-//		// removes and returns the top card of the hand
-//		
-//		
-//	}
+	public Card flip() {
+		// removes and returns the top card of the hand
+		
+		Card flippedCard = hand.get(0);
+		hand.remove(0);
+		
+		return flippedCard;
+	}
 	
-//	public void draw(Deck deck) {
-//		// takes a Deck as an argument and calls the draw method on the deck, adding the returned Card to the hand
-//		
-//		
-//	}
+	public void draw(Deck deck) {
+		// takes a Deck as an argument and calls the draw method on the deck, adding the returned Card to the hand field
+		hand.add(deck.draw() );  //NULL POINTER EXCEPTION
+	}
+	
+	public Card testDraw(Deck deck) {
+		return deck.draw();
+	}
 	
 	public void incrementScore() {
 		// adds 1 to the player's score
-		
 		score++;
 	}
 	
