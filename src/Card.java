@@ -25,19 +25,13 @@ public class Card {
 	public Value getValue() {
 		return value;
 	}
-
 	public void setValue(Value value) {
 		this.value = value;
 	}
-
 	public Suit getSuit() {
 		return suit;
 	}
-
 	public void setSuit(Suit suit) {
 		this.suit = suit;
 	}
-	
-	
-
 }

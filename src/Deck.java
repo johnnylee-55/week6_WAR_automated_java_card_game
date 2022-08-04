@@ -10,7 +10,6 @@ public class Deck {
 	// constructor
 	public Deck() {
 		// creates an new, ordered deck upon construction
-		
 		cards = new ArrayList<Card>();
 		
 		for (Suit suit : Suit.values() ) {
@@ -23,21 +22,21 @@ public class Deck {
 	
 	// methods
 	public void describe() {  
-		
 		System.out.println("====PLAYING DECK====");
 		
 		int i = 0;
 		for (Card card : cards) {
 			i++;
 			System.out.print(i + "-");
-			card.describe();
-			
+			card.describe();		
 		}
-	}
+	} // *note* this method is not used in the application.
+	  //        it is only used to print a specific output for assignment submission.
+	
 	
 	public void shuffle() {
-		// shuffles order or cards in deck
-		
+		// shuffles order of cards in deck
+	
 		Card tempCard;
 		Random r = new Random();
 		
@@ -52,17 +51,14 @@ public class Deck {
 			cards.set(randIndex, tempCard);
 			
 		} // end of loop
-		
 	}
+	
 	
 	public Card draw() {
 		// removes and returns the top card of the Cards field
-		
 		Card drawnCard = cards.get(0);
 		cards.remove(0);
 		
 		return drawnCard;
-		
 	}
-
 }
